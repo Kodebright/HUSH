@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:card_view="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="8dip"
+              android:paddingBottom="8dip">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/backup_card_hush"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            card_view:cardElevation="3dp"
+            card_view:cardCornerRadius="3dp"
+            card_view:cardUseCompatPadding="true">
+
+        <LinearLayout android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center_vertical"
+                      android:padding="16dip">
+
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginRight="10dip"
+                       android:layout_marginEnd="10dip"
+                       android:src="?attr/dialog_info_icon"/>
+
+            <LinearLayout android:orientation="vertical"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1">
+
+                <TextView android:id="@+id/backup_card_hush_title"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:textSize="16sp"
+                          android:textStyle="bold"
+                          android:textColor="?android:attr/textColorPrimary"/>
+
+                <TextView android:id="@+id/backup_card_hush_subtitle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:textSize="14sp"
+                          android:textColor="?android:attr/textColorSecondary"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/backup_card_silence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            card_view:cardElevation="3dp"
+            card_view:cardCornerRadius="3dp"
+            card_view:cardUseCompatPadding="true">
+
+        <LinearLayout android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center_vertical"
+                      android:padding="16dip">
+
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginRight="10dip"
+                       android:layout_marginEnd="10dip"
+                       android:src="?attr/dialog_info_icon"/>
+
+            <LinearLayout android:orientation="vertical"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1">
+
+                <TextView android:id="@+id/backup_card_silence_title"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:textSize="16sp"
+                          android:textStyle="bold"
+                          android:textColor="?android:attr/textColorPrimary"/>
+
+                <TextView android:id="@+id/backup_card_silence_subtitle"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:textSize="14sp"
+                          android:textColor="?android:attr/textColorSecondary"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

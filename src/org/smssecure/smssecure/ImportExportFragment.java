@@ -9,12 +9,14 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.smssecure.smssecure.crypto.MasterSecret;
@@ -32,7 +34,6 @@ import org.smssecure.smssecure.util.StoragePermissions;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -221,31 +222,62 @@ public class ImportExportFragment extends Fragment {
       return;
     }
 
-    // Newest backup first so the most likely choice is the top row.
-    Collections.sort(directories, (a, b) -> Long.compare(getNewestFileTime(b),
-                                                         getNewestFileTime(a)));
-
-    CharSequence[] labels = new CharSequence[directories.size()];
-    for (int i = 0; i < directories.size(); i++) {
-      labels[i] = buildBackupChoiceLabel(directories.get(i));
-    }
+    View content = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_choose_backup, null);
 
     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-    builder.setIconAttribute(R.attr.dialog_info_icon);
     builder.setTitle(R.string.ImportFragment_choose_backup_title);
-    builder.setItems(labels, (dialog, which) -> confirmRestoreEncryptedBackup(directories.get(which)));
+    builder.setView(content);
     builder.setNegativeButton(R.string.ImportFragment_cancel, null);
-    builder.show();
+    AlertDialog chooserDialog = builder.create();
+
+    bindBackupCard(content, chooserDialog, R.id.backup_card_hush,
+                   R.id.backup_card_hush_title, R.id.backup_card_hush_subtitle,
+                   R.string.ImportFragment_backup_card_hush_title,
+                   findBackupDirectory(directories, BackupPaths.HUSH_EXPORT_DIRECTORY));
+    bindBackupCard(content, chooserDialog, R.id.backup_card_silence,
+                   R.id.backup_card_silence_title, R.id.backup_card_silence_subtitle,
+                   R.string.ImportFragment_backup_card_silence_title,
+                   findBackupDirectory(directories, BackupPaths.LEGACY_SILENCE_EXPORT_DIR));
+
+    chooserDialog.show();
   }
 
-  private CharSequence buildBackupChoiceLabel(File directory) {
-    DateFormat format = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT);
-    String date       = format.format(new Date(getNewestFileTime(directory)));
-
-    if (BackupPaths.isLegacySilenceDirectory(directory)) {
-      return getString(R.string.ImportFragment_backup_choice_legacy, directory.getName(), date);
+  /**
+   * Binds one chooser card to its backup folder, matched by folder name.
+   * The card is hidden when its folder is not in the list, so no list
+   * index is ever read blindly.
+   */
+  private void bindBackupCard(View content, AlertDialog chooserDialog,
+                              int cardId, int titleId, int subtitleId,
+                              int titleRes, @Nullable File directory) {
+    View card = content.findViewById(cardId);
+    if (directory == null) {
+      card.setVisibility(View.GONE);
+      return;
     }
-    return getString(R.string.ImportFragment_backup_choice_entry, directory.getName(), date);
+
+    TextView title    = (TextView) card.findViewById(titleId);
+    TextView subtitle = (TextView) card.findViewById(subtitleId);
+    DateFormat format = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT);
+    long   newest     = getNewestFileTime(directory);
+    String date       = newest > 0L ? format.format(new Date(newest))
+                                    : getString(R.string.ImportFragment_backup_card_no_date);
+
+    title.setText(titleRes);
+    subtitle.setText(getString(R.string.ImportFragment_backup_card_subtitle,
+                               directory.getName(), date));
+
+    card.setOnClickListener(v -> {
+      chooserDialog.dismiss();
+      confirmRestoreEncryptedBackup(directory);
+    });
+  }
+
+  private static File findBackupDirectory(List<File> directories, String folderName) {
+    for (File directory : directories) {
+      if (folderName.equals(directory.getName())) return directory;
+    }
+    return null;
   }
 
   /**
