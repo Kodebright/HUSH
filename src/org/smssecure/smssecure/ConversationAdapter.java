@@ -194,7 +194,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   public ViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
     long start = System.currentTimeMillis();
     final V itemView = ViewUtil.inflate(inflater, parent, getLayoutForViewType(viewType));
-    if (viewType == MESSAGE_TYPE_INCOMING || viewType == MESSAGE_TYPE_OUTGOING) {
+    if (viewType != MESSAGE_TYPE_UPDATE) {
       itemView.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View view) {
