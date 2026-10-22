@@ -220,30 +220,15 @@ public class AttachmentManager {
   }
 
   public static void selectVideo(Activity activity, int requestCode) {
-    Permissions.with(activity)
-               .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-               .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.AttachmentManager_silence_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio))
-               .onAllGranted(() -> selectMediaType(activity, "video/*", requestCode))
-               .execute();
+    selectMediaType(activity, "video/*", requestCode);
   }
 
   public static void selectImage(Activity activity, int requestCode) {
-    Permissions.with(activity)
-               .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-               .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.AttachmentManager_silence_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio))
-               .onAllGranted(() -> selectMediaType(activity, "image/*", requestCode))
-               .execute();
+    selectMediaType(activity, "image/*", requestCode);
   }
 
   public static void selectAudio(Activity activity, int requestCode) {
-    Permissions.with(activity)
-               .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-               .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.AttachmentManager_silence_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio))
-               .onAllGranted(() -> selectMediaType(activity, "audio/*", requestCode))
-               .execute();
+    selectMediaType(activity, "audio/*", requestCode);
   }
 
   public static void selectContactInfo(Activity activity, int requestCode) {
