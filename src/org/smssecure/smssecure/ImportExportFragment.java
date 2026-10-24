@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.content.res.AppCompatResources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -230,6 +231,8 @@ public class ImportExportFragment extends Fragment {
     builder.setNegativeButton(R.string.ImportFragment_cancel, null);
     AlertDialog chooserDialog = builder.create();
 
+    applyBlueBorder(getActivity(), chooserDialog);
+
     bindBackupCard(content, chooserDialog, R.id.backup_card_hush,
                    R.id.backup_card_hush_title, R.id.backup_card_hush_subtitle,
                    R.string.ImportFragment_backup_card_hush_title,
@@ -295,6 +298,38 @@ public class ImportExportFragment extends Fragment {
       }
     }
     return newest > 0L ? newest : root.lastModified();
+  }
+
+  /**
+   * Shown after a successful backup export: tells the user where the
+   * backup was written and to copy it off this phone. Encrypted exports
+   * get a different last sentence when no passphrase is set; plaintext
+   * exports write a single root-level file, not a folder.
+   */
+  private void showBackupSavedDialog(Context context, int messageRes, String formatArg) {
+    if (!isAdded() || getActivity() == null || getActivity().isFinishing()) return;
+
+    AlertDialog dialog = new AlertDialog.Builder(context)
+        .setIconAttribute(R.attr.dialog_info_icon)
+        .setTitle(R.string.ExportFragment_backup_saved_title)
+        .setMessage(context.getString(messageRes, formatArg))
+        .setPositiveButton(android.R.string.ok, null)
+        .create();
+
+    applyBlueBorder(context, dialog);
+    dialog.show();
+  }
+
+  /**
+   * Draws the shared blue-bordered background behind a dialog box. Same
+   * white fill, floating inset and corner radius as the stock dialog
+   * background; only the stroke is new.
+   */
+  private static void applyBlueBorder(Context context, AlertDialog dialog) {
+    if (dialog.getWindow() != null) {
+      dialog.getWindow().setBackgroundDrawable(
+          AppCompatResources.getDrawable(context, R.drawable.dialog_border_blue));
+    }
   }
 
   @SuppressWarnings("CodeBlock2Expr")
@@ -487,9 +522,9 @@ public class ImportExportFragment extends Fragment {
                          Toast.LENGTH_LONG).show();
           break;
         case SUCCESS:
-          Toast.makeText(context,
-                         context.getString(R.string.ExportFragment_export_successful),
-                         Toast.LENGTH_LONG).show();
+          showBackupSavedDialog(context,
+                                R.string.ExportFragment_backup_saved_message_plaintext,
+                                BackupPaths.HUSH_PLAINTEXT_BACKUP_FILE);
           break;
       }
     }
@@ -628,9 +663,11 @@ public class ImportExportFragment extends Fragment {
                          Toast.LENGTH_LONG).show();
           break;
         case SUCCESS:
-          Toast.makeText(context,
-                         context.getString(R.string.ExportFragment_export_successful),
-                         Toast.LENGTH_LONG).show();
+          showBackupSavedDialog(context,
+                                SilencePreferences.isPasswordDisabled(context)
+                                    ? R.string.ExportFragment_backup_saved_message_no_passphrase
+                                    : R.string.ExportFragment_backup_saved_message_encrypted,
+                                BackupPaths.HUSH_EXPORT_DIRECTORY);
           break;
       }
     }

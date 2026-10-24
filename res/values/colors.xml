@@ -5,6 +5,9 @@
     <color name="silence_primary_alpha33">#55132A67</color>
     <color name="silence_primary_alpha_focus">#88132A67</color>
 
+    <!-- Brand blue from the HUSH icon body; border around the backup dialogs. -->
+    <color name="hush_blue_border">#ff2A52B5</color>
+
     <color name="white">#ffffffff</color>
     <color name="black">#ff000000</color>
     <color name="gray5">#ffeeeeee</color>

@@ -243,6 +243,10 @@
     <string name="ExportFragment_error_unable_to_write_to_storage">Error, unable to write to storage.</string>
     <string name="ExportFragment_error_while_writing_to_storage">Error while writing to storage.</string>
     <string name="ExportFragment_export_successful">Export successful.</string>
+    <string name="ExportFragment_backup_saved_title">Keep your backup safe</string>
+    <string name="ExportFragment_backup_saved_message_encrypted">Your backup was saved on this phone in the folder %1$s. If this phone is lost, damaged or reset to factory settings, this backup will be lost too. Copy the folder to a computer or a USB drive now. Keep your passphrase safe as well: without it, an encrypted backup cannot be restored.</string>
+    <string name="ExportFragment_backup_saved_message_plaintext">Your backup was saved on this phone as the file %1$s in the root of your storage. If this phone is lost, damaged or reset to factory settings, this backup will be lost too. Copy the file to a computer or a USB drive now. This backup is not encrypted, so keep it private.</string>
+    <string name="ExportFragment_backup_saved_message_no_passphrase">Your backup was saved on this phone in the folder %1$s. If this phone is lost, damaged or reset to factory settings, this backup will be lost too. Copy the folder to a computer or a USB drive now. This backup is not protected by a passphrase, so keep it private.</string>
     <string name="ExportFragment_export_encrypted_backup">Export encrypted backup?</string>
     <string name="ExportFragment_this_will_export_your_encrypted_keys_settings_and_messages">This will export your encrypted keys, settings, and messages to storage.</string>
     <string name="ExportFragment_exporting_keys_settings_and_messages">Exporting encrypted keys, settings, and messages…</string>

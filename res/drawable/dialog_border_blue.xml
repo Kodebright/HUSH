@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared blue border for the backup dialogs. Mirrors the stock appcompat
+     dialog window background (16dp floating inset, 2dp corner radius, white
+     fill) and adds a 2dp HUSH-blue stroke, so only the border is new. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+       android:insetLeft="16dp"
+       android:insetTop="16dp"
+       android:insetRight="16dp"
+       android:insetBottom="16dp">
+    <shape android:shape="rectangle">
+        <solid android:color="@android:color/white" />
+        <corners android:radius="2dp" />
+        <stroke android:width="2dp" android:color="@color/hush_blue_border" />
+        <padding android:left="2dp" android:top="2dp"
+                 android:right="2dp" android:bottom="2dp" />
+    </shape>
+</inset>
