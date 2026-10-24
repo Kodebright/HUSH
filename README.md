@@ -14,6 +14,7 @@ Silence/SMSSecure was one of the few apps that let people send genuinely encrypt
 - Works entirely over the standard cellular SMS/MMS network — no internet or data connection required to send or receive
 - No phone number verification server, no account, no central service
 - Can be set as your device's default messaging app
+- Can import an encrypted backup created by the Silence app (the SilenceExport folder on your phone's storage), provided you enter the same passphrase that was used to create it
 - Free and open source, licensed under the GPLv3
 
 ## Download
