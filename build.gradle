@@ -15,7 +15,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        mavenLocal()
 
     }
 }
@@ -107,8 +106,8 @@ android {
 
     defaultConfig {
         applicationId "org.hushsms.smssecureng"
-        versionCode 213
-        versionName "1.0.0"
+        versionCode 214
+        versionName "1.0.1"
 
         minSdkVersion 21
         targetSdkVersion 35

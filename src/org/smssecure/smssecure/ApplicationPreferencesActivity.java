@@ -188,7 +188,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     }
 
     private void handleAbout() {
-      Dialogs.showHtmlDialog(getActivity(), R.string.preferences__about, getString(R.string.about_hush_html));
+      Dialogs.showHtmlDialog(getActivity(), R.string.preferences__about, getString(R.string.about_hush_html, BuildConfig.VERSION_NAME));
     }
 
     private void handlePrivacyPolicy() {

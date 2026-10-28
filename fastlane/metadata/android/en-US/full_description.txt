@@ -6,4 +6,4 @@ Every message you send through HUSH is encrypted right on your own device, and o
 
 HUSH respects your privacy completely: it never collects your messages, your contacts, or any other personal information. It runs no server, asks for no account, and never shares your data — for the simple reason that it never has it.
 
-HUSH is, and always will be, free and open source — licensed under the GNU General Public License v3.0 (GPLv3). We're grateful to the original Silence, SMSSecure, and TextSecure projects and everyone who built and maintained them before us; HUSH simply wouldn't exist without their work.
+HUSH is, and always will be, free and open source — licensed under the GNU General Public License v3.0 (GPLv3 or later). We're grateful to the original Silence, SMSSecure, and TextSecure projects and everyone who built and maintained them before us; HUSH simply wouldn't exist without their work.

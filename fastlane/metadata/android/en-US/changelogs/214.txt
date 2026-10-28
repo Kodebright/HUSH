@@ -1,0 +1,1 @@
+Maintenance release: removes unused legacy files and shows the correct version number in the About screen. No changes to encryption or messaging.
