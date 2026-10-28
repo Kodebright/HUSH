@@ -8,11 +8,6 @@ stages:
   - build
   - test
 
-buildWitness:
-  stage: build
-  script:
-    - ./scripts/build-witness.sh
-
 assembleDebug:
   stage: build
   script:

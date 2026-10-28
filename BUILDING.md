@@ -26,11 +26,7 @@ The following steps should help you (re)build Silence from the command line.
 
         sdk.dir=\<path to your sdk installation\>
 
-5. (Optional) Build [Gradle-Witness](https://git.silence.dev/Silence/gradle-witness)
-
-        ./scripts/build-witness.sh
-
-6. Execute Gradle:
+5. Execute Gradle:
 
         ./gradlew assembleDebug
 
