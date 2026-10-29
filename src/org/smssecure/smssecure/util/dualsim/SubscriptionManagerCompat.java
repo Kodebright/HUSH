@@ -8,6 +8,7 @@ import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 
 import org.smssecure.smssecure.util.ServiceUtil;
 
@@ -17,6 +18,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class SubscriptionManagerCompat {
+
+  private static final String TAG = SubscriptionManagerCompat.class.getSimpleName();
 
   private static SubscriptionManagerCompat instance;
 
@@ -107,7 +110,14 @@ public class SubscriptionManagerCompat {
       return compatList;
     }
 
-    List<SubscriptionInfo> subscriptionInfos = SubscriptionManager.from(context).getActiveSubscriptionInfoList();
+    List<SubscriptionInfo> subscriptionInfos;
+
+    try {
+      subscriptionInfos = SubscriptionManager.from(context).getActiveSubscriptionInfoList();
+    } catch (SecurityException e) {
+      Log.w(TAG, "READ_PHONE_STATE not granted yet; returning empty subscription list");
+      return compatList;
+    }
     updateDisplayNameList(subscriptionInfos);
 
     if (subscriptionInfos == null || subscriptionInfos.isEmpty()) {

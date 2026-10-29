@@ -54,7 +54,14 @@ public class SimChangedReceiver extends BroadcastReceiver {
     if (Build.VERSION.SDK_INT < 22) return "1";
 
     SubscriptionManager    subscriptionManager = SubscriptionManager.from(context);
-    List<SubscriptionInfo> activeSubscriptions = subscriptionManager.getActiveSubscriptionInfoList();
+    List<SubscriptionInfo> activeSubscriptions;
+
+    try {
+      activeSubscriptions = subscriptionManager.getActiveSubscriptionInfoList();
+    } catch (SecurityException e) {
+      Log.w(TAG, "READ_PHONE_STATE not granted yet; assuming a single subscription");
+      return "1";
+    }
 
     if (activeSubscriptions == null) return "1";
 
