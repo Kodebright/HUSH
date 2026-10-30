@@ -104,7 +104,7 @@ Atentu, tio ĉi malaktivigos ĉifradon de konservejo por ĉiuj mesaĝoj kaj ŝlo
     <string name="ConversationActivity_transport_insecure_mms">Malsekura MMS</string>
     <string name="ConversationActivity_transport_secure_sms">Sekura SMS</string>
     <string name="ConversationActivity_transport_secure_mms">Sekura MMS</string>
-    <string name="ConversationActivity_install_smssecure">Ni interparolu sekure per Silence: %s</string>
+    <string name="ConversationActivity_install_smssecure">Ni interparolu sekure: %s</string>
     <string name="ConversationActivity_recipient_self">Vi ne povas komenci sekuran seancon kun vi mem!</string>
     <string name="ConversationActivity_mms_not_supported_title">MMS-oj ne estas subtenataj</string>
     <string name="ConversationActivity_mms_not_supported_message">Ne povas sendi tiun ĉi mesaĝon ĉar via telefon-provizanto ne subtenas MMS-ojn.</string>

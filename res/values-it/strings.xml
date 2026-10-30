@@ -104,7 +104,7 @@ Attenzione, così facendo interromperai la cifratura di tutti i messaggi e le ch
     <string name="ConversationActivity_transport_insecure_mms">MMS non sicuro</string>
     <string name="ConversationActivity_transport_secure_sms">SMS sicuro</string>
     <string name="ConversationActivity_transport_secure_mms">MMS sicuro</string>
-    <string name="ConversationActivity_install_smssecure">Installa SMSSecure: %s</string>
+    <string name="ConversationActivity_install_smssecure">Chattiamo in sicurezza: %s</string>
     <string name="ConversationActivity_recipient_self">Non puoi iniziare una sessione sicura con te stesso.</string>
     <string name="ConversationActivity_mms_not_supported_title">MMS non supportati</string>
     <string name="ConversationActivity_mms_not_supported_message">Questo messaggio non può essere inviato perché il tuo operatore non supporta gli MMS.</string>
