@@ -119,6 +119,7 @@
     <string name="ConversationActivity_transport_secure_sms">Secure SMS</string>
     <string name="ConversationActivity_transport_secure_mms">Secure MMS</string>
     <string name="ConversationActivity_install_smssecure">Let\'s chat securely: %s</string>
+    <string name="invite_url" translatable="false">https://github.com/Kodebright/HUSH/releases</string>
     <string name="ConversationActivity_recipient_self">Secure sessions can only be established with other people.</string>
     <string name="ConversationActivity_mms_not_supported_title">MMS not supported</string>
     <string name="ConversationActivity_mms_not_supported_message">This message cannot be sent since your carrier doesn\'t support MMS.</string>
@@ -853,6 +854,7 @@
 
     <!-- conversation_list -->
     <string name="conversation_list__menu_search">Search</string>
+    <string name="conversation_list__invite">Invite friends</string>
 
     <!-- conversation_list_item_view -->
     <string name="conversation_list_item_view__contact_photo_image">Contact avatar</string>

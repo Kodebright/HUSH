@@ -591,7 +591,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleInviteLink() {
-    composeText.appendInvite(getString(R.string.ConversationActivity_install_smssecure, "https://silence.im"));
+    composeText.appendInvite(getString(R.string.ConversationActivity_install_smssecure, getString(R.string.invite_url)));
   }
 
   private void handleVerifyIdentity() {

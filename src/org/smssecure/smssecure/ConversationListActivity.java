@@ -195,9 +195,20 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     } else if (itemId == R.id.menu_my_identity) {
       handleMyIdentity();
       return true;
+    } else if (itemId == R.id.menu_invite_friends) {
+      handleInviteFriends();
+      return true;
     }
 
     return false;
+  }
+
+  private void handleInviteFriends() {
+    Intent intent = new Intent(this, NewConversationActivity.class);
+    intent.putExtra(ConversationActivity.TEXT_EXTRA,
+                    getString(R.string.ConversationActivity_install_smssecure,
+                              getString(R.string.invite_url)));
+    startActivity(intent);
   }
 
   @Override
