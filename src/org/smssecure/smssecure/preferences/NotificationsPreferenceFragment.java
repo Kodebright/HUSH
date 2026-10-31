@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
@@ -40,9 +42,21 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     masterSecret = getArguments().getParcelable("master_secret");
 
     this.findPreference(SilencePreferences.LED_COLOR_PREF)
-        .setOnPreferenceChangeListener(new ListSummaryListener());
+        .setOnPreferenceChangeListener(new ChannelUpdateListener());
     this.findPreference(SilencePreferences.LED_BLINK_PREF)
         .setOnPreferenceChangeListener(new ListSummaryListener());
+
+    Preference vibratePreference = findPreference(SilencePreferences.VIBRATE_PREF);
+
+    if (vibratePreference != null) {
+      vibratePreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+          updateMessagesChannelAfterPersist();
+          return true;
+        }
+      });
+    }
     Preference ringtonePreference = findPreference(SilencePreferences.RINGTONE_PREF);
 
     if (ringtonePreference != null) {
@@ -206,5 +220,35 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       return super.onPreferenceChange(preference, value);
     }
 
+  }
+
+  private class ChannelUpdateListener extends ListSummaryListener {
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object value) {
+      updateMessagesChannelAfterPersist();
+      return super.onPreferenceChange(preference, value);
+    }
+  }
+
+  private void updateMessagesChannelAfterPersist() {
+    Activity activity = getActivity();
+
+    if (activity == null) {
+      return;
+    }
+
+    final Context context = activity.getApplicationContext();
+
+    // onPreferenceChange fires before androidx persists the new value, so rebuild after it returns
+    new Handler(Looper.getMainLooper()).post(new Runnable() {
+      @Override
+      public void run() {
+        try {
+          NotificationChannels.updateMessagesChannel(context);
+        } catch (Exception e) {
+          Log.w(TAG, "Unable to update messages notification channel.", e);
+        }
+      }
+    });
   }
 }

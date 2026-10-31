@@ -47,7 +47,7 @@ public class SilencePreferences {
   private static final String SEEN_BRAND_NAME_UPDATE           = "seen_brand_name_update";
   public  static final String RINGTONE_PREF                    = "pref_key_ringtone";
   public  static final String NOTIFICATION_CHANNEL_VERSION_PREF = "pref_notification_channel_version";
-  private static final String VIBRATE_PREF                     = "pref_key_vibrate";
+  public  static final String VIBRATE_PREF                     = "pref_key_vibrate";
   private static final String NOTIFICATION_PREF                = "pref_key_enable_notifications";
   public  static final String LED_COLOR_PREF                   = "pref_led_color";
   public  static final String LED_BLINK_PREF                   = "pref_led_blink";

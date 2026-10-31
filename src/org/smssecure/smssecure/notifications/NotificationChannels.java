@@ -3,6 +3,7 @@ package org.smssecure.smssecure.notifications;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Build;
@@ -112,6 +113,29 @@ public class NotificationChannels {
       }
     } catch (Exception e) {
       Log.w(TAG, "Unable to apply notification sound, leaving channel default.", e);
+    }
+
+    try {
+      channel.enableVibration(SilencePreferences.isNotificationVibrateEnabled(context));
+    } catch (Exception e) {
+      Log.w(TAG, "Unable to apply vibration setting, leaving channel default.", e);
+    }
+
+    try {
+      String ledColor = SilencePreferences.getNotificationLedColor(context);
+
+      if (!"none".equals(ledColor)) {
+        try {
+          int color = Color.parseColor(ledColor);
+
+          channel.setLightColor(color);
+          channel.enableLights(true);
+        } catch (IllegalArgumentException e) {
+          Log.w(TAG, "Unable to apply LED colour, leaving lights off.", e);
+        }
+      }
+    } catch (Exception e) {
+      Log.w(TAG, "Unable to apply LED colour setting, leaving lights off.", e);
     }
 
     notificationManager.createNotificationChannel(channel);
