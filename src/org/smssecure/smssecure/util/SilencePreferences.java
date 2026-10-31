@@ -46,6 +46,7 @@ public class SilencePreferences {
   private static final String PERMISSIONS_ASKED                = "permissions_asked";
   private static final String SEEN_BRAND_NAME_UPDATE           = "seen_brand_name_update";
   public  static final String RINGTONE_PREF                    = "pref_key_ringtone";
+  public  static final String NOTIFICATION_CHANNEL_VERSION_PREF = "pref_notification_channel_version";
   private static final String VIBRATE_PREF                     = "pref_key_vibrate";
   private static final String NOTIFICATION_PREF                = "pref_key_enable_notifications";
   public  static final String LED_COLOR_PREF                   = "pref_led_color";
@@ -524,6 +525,18 @@ public class SilencePreferences {
 
   public static String getNotificationRingtone(Context context) {
     return getStringPreference(context, RINGTONE_PREF, Settings.System.DEFAULT_NOTIFICATION_URI.toString());
+  }
+
+  public static int getNotificationChannelVersion(Context context) {
+    try {
+      return Integer.parseInt(getStringPreference(context, NOTIFICATION_CHANNEL_VERSION_PREF, "0"));
+    } catch (NumberFormatException e) {
+      return 0;
+    }
+  }
+
+  public static void setNotificationChannelVersion(Context context, int version) {
+    setStringPreference(context, NOTIFICATION_CHANNEL_VERSION_PREF, String.valueOf(version));
   }
 
   public static boolean isNotificationVibrateEnabled(Context context) {

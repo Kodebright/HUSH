@@ -30,7 +30,7 @@ public abstract class AbstractNotificationBuilder extends NotificationCompat.Bui
     this.context = context;
     this.privacy = privacy;
 
-    setChannelId(NotificationChannels.MESSAGES);
+    setChannelId(NotificationChannels.getMessagesChannelId(context));
   }
 
   protected CharSequence getStyledMessage(@NonNull Recipient recipient, @Nullable CharSequence message) {

@@ -400,7 +400,11 @@ public class MessageNotifier {
       ringtone.setStreamType(AudioManager.STREAM_NOTIFICATION);
     }
 
-    ringtone.play();
+    try {
+      ringtone.play();
+    } catch (Exception e) {
+      Log.w(TAG, "Could not play in-conversation notification sound.", e);
+    }
   }
 
   private static NotificationState constructNotificationState(Context context,
