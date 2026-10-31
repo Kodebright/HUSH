@@ -39,8 +39,6 @@ public class NotificationChannels {
     try {
       NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
 
-      ensureMessagesChannel(context, notificationManager);
-
       NotificationChannel failures     = new NotificationChannel(FAILURES, context.getString(R.string.NotificationChannel_failures), NotificationManager.IMPORTANCE_HIGH);
       NotificationChannel lockedStatus = new NotificationChannel(LOCKED_STATUS, context.getString(R.string.NotificationChannel_locked_status), NotificationManager.IMPORTANCE_LOW);
       NotificationChannel other        = new NotificationChannel(OTHER, context.getString(R.string.NotificationChannel_other), NotificationManager.IMPORTANCE_LOW);
@@ -48,6 +46,14 @@ public class NotificationChannels {
       notificationManager.createNotificationChannels(Arrays.asList(failures, lockedStatus, other));
     } catch (Exception e) {
       Log.w(TAG, "Unable to create notification channels.", e);
+    }
+
+    try {
+      NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+
+      ensureMessagesChannel(context, notificationManager);
+    } catch (Exception e) {
+      Log.w(TAG, "Unable to create messages notification channel.", e);
     }
   }
 

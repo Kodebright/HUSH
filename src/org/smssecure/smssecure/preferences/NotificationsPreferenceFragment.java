@@ -116,6 +116,8 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       activity.startActivityForResult(intent, PICK_NOTIFICATION_RINGTONE);
     } catch (ActivityNotFoundException e) {
       Log.w(TAG, "No ringtone picker available on this device.");
+    } catch (SecurityException e) {
+      Log.w(TAG, "Not allowed to launch the ringtone picker.", e);
     }
   }
 
@@ -163,15 +165,26 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   private class RingtoneSummaryListener implements Preference.OnPreferenceChangeListener {
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-      Uri value = (Uri) newValue;
+      try {
+        Uri value = newValue instanceof Uri ? (Uri) newValue : null;
 
-      if (value == null) {
-        preference.setSummary(R.string.preferences__silent);
-      } else {
-        Ringtone tone = RingtoneManager.getRingtone(getActivity(), value);
-        if (tone != null) {
-          preference.setSummary(tone.getTitle(getActivity()));
+        if (value == null) {
+          preference.setSummary(R.string.preferences__silent);
+        } else {
+          Activity activity = getActivity();
+
+          if (activity == null) {
+            return true;
+          }
+
+          Ringtone tone = RingtoneManager.getRingtone(activity, value);
+
+          if (tone != null) {
+            preference.setSummary(tone.getTitle(activity));
+          }
         }
+      } catch (Exception e) {
+        Log.w(TAG, "Unable to update ringtone summary.", e);
       }
 
       return true;
