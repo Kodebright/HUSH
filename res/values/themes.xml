@@ -8,6 +8,7 @@
         <item name="actionBarTabBarStyle">@style/Silence.LightActionBar.TabBar</item>
         <item name="colorPrimary">@color/silence_primary</item>
         <item name="colorPrimaryDark">@color/silence_primary_dark</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
         <item name="colorAccent">@color/silence_primary_dark</item>
         <item name="alertDialogTheme">@style/AppCompatAlertDialogStyleLight</item>
         <item name="android:alertDialogTheme">@style/AppCompatDialogStyleLight</item>
@@ -26,6 +27,7 @@
         <item name="actionBarStyle">@style/Silence.DarkActionBar</item>
         <item name="actionBarTabBarStyle">@style/Silence.DarkActionBar.TabBar</item>
         <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
         <item name="alertDialogTheme">@style/AppCompatAlertDialogStyleDark</item>
         <item name="android:alertDialogTheme">@style/AppCompatDialogStyleDark</item>
 
@@ -43,6 +45,7 @@
         <item name="actionBarStyle">@style/Silence.IntroActionBar</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="colorAccent">@color/silence_primary</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
 
         <item name="android:textColorHint">#cc000000</item>
         <item name="centered_app_title_color">#55000000</item>
@@ -54,6 +57,7 @@
         <item name="actionBarStyle">@style/Silence.IntroActionBar</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="colorAccent">@color/silence_primary_dark</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
 
         <item name="android:textColorHint">@color/white</item>
         <item name="centered_app_title_color">@color/gray27</item>
@@ -85,6 +89,7 @@
         <item name="actionBarTabBarStyle">@style/Silence.LightActionBar.TabBar</item>
         <item name="colorPrimary">@color/silence_primary</item>
         <item name="colorPrimaryDark">@color/silence_primary_dark</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
         <item name="colorAccent">@color/silence_primary_dark</item>
         <item name="colorControlActivated">@color/silence_primary</item>
         <item name="colorControlHighlight">@color/silence_primary</item>
@@ -201,6 +206,7 @@
         <item name="actionBarStyle">@style/Silence.DarkActionBar</item>
         <item name="actionBarTabBarStyle">@style/Silence.DarkActionBar.TabBar</item>
         <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
         <item name="android:textColor">@color/text_color_dark_theme</item>
         <item name="android:textColorSecondary">@color/text_color_secondary_dark_theme</item>
         <item name="colorAccent">@color/silence_primary_dark</item>
