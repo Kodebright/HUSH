@@ -25,5 +25,5 @@ Also include the value of any relevant preferences you have set in the app.
 <!--
 Immediately after the bug has happened capture a debug log via Settings -> Advanced -> Submit log and paste the link here.
 If you can't access the menu, you can use ADB to grab the debug log: `adb logcat | grep $(adb shell ps | grep org.smssecure.smssecure | tr -s " " | cut -d " " -f2)`.
-If your debug log contains sensitive data, you can censor it (please don't remove any relevant data) or send it to support@silence.im instead
+If your debug log contains sensitive data, you can censor it (please don't remove any relevant data).
 -->
