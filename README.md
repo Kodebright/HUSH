@@ -21,6 +21,8 @@ Silence/SMSSecure was one of the few apps that let people send genuinely encrypt
 
 HUSH is distributed as a free, open-source app. (F-Droid listing coming soon — this section will be updated with a direct link once published.)
 
+Download the latest HUSH APK from GitHub: [Kodebright/HUSH releases](https://github.com/Kodebright/HUSH/releases/latest).
+
 ## Credits & License
 
 HUSH is a fork of [**Silence**](https://github.com/SilenceIM/Silence), which was itself a fork of **SMSSecure**, which in turn was based on **TextSecure** by Open Whisper Systems. HUSH exists thanks to the work of all of the original authors and contributors to those projects.
