@@ -106,8 +106,8 @@ android {
 
     defaultConfig {
         applicationId "org.hushsms.smssecureng"
-        versionCode 214
-        versionName "1.0.1"
+        versionCode 215
+        versionName "1.0.2"
 
         minSdkVersion 21
         targetSdkVersion 35

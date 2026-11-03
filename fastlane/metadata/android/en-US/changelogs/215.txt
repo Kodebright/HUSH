@@ -1,0 +1,4 @@
+- New: Invite friends option in the main menu
+- New: choose your notification sound with the system sound picker, plus vibration and LED settings
+- Improved display on Android 15
+- Cleanup and stability improvements
